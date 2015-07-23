@@ -1,0 +1,6 @@
+# Ignore bundler config
+/.bundle
+/.sass-cache
+/.cache
+.DS_Store
+build

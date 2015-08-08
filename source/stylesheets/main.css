@@ -1,0 +1,11 @@
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+.unsure {
+  color: #787878;
+}
+
+.lyrics {
+  white-space: pre;
+}

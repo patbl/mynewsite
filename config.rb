@@ -44,6 +44,9 @@ set :js_dir, 'javascripts'
 
 set :images_dir, 'images'
 
+set :markdown_engine, :redcarpet
+set :markdown, fenced_code_blocks: true, smartypants: true
+
 # Build-specific configuration
 configure :build do
   # For example, change the Compass output style for deployment
@@ -62,4 +65,11 @@ configure :build do
   # set :http_prefix, "/Content/images/"
 
   activate :directory_indexes
+end
+
+activate :deploy do |deploy|
+  deploy.method = :rsync
+  deploy.host = "ssh.phx.nearlyfreespeech.net"
+  deploy.path = "/home/public"
+  deploy.user = "itwastrees_pbl"
 end

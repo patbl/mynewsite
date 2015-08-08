@@ -1,0 +1,42 @@
+:ruby
+  menu_items = {
+    '/' => 'About',
+    '/resume.pdf' => 'Résumé',
+    '/contact/' => 'Contact',
+    '/misc/' => 'Miscellaneous',
+  }
+
+!!! 5
+%html.no-js.sticky
+  %head
+    %meta(charset="utf-8")
+    %meta(name="viewport" content="width=device-width, initial-scale=1")
+
+    %title #{current_page.data.title + " - " if current_page.data.title}Patrick Brinich-Langlois
+
+    %link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
+    %link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css")
+    %link(rel="stylesheet" href='https://fonts.googleapis.com/css?family=Open+Sans')
+
+    %script(src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
+    %script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js")
+
+    = stylesheet_link_tag "main"
+    = javascript_include_tag "all"
+
+  %body
+    .navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          %button.navbar-toggle.collapsed(type="button" data-toggle="collapse" data-target="#navbar-collapse")
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to "Patrick Brinich-Langlois", "/", class: "navbar-brand"
+        .collapse.navbar-collapse#navbar-collapse
+          %ul.nav.navbar-nav
+            - menu_items.each do |path, title|
+              %li= link_to(title, path)
+
+    .container-fluid
+      ~ yield

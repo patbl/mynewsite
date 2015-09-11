@@ -71,5 +71,5 @@ activate :deploy do |deploy|
   deploy.method = :rsync
   deploy.host = "ssh.phx.nearlyfreespeech.net"
   deploy.path = "/home/public"
-  deploy.user = "itwastrees_pbl"
+  deploy.user = "itwastrees_patbl"
 end

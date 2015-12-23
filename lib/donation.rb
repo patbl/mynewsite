@@ -6,6 +6,7 @@ class Donation
     "The Humane League" => "http://www.thehumaneleague.com/",
     "Animal Charity Evaluators" => "http://www.animalcharityevaluators.org/",
     "St. Olaf College" => "http://stolaf.edu/",
+    "Centre for Effective Altruism" => "https://www.centreforeffectivealtruism.org/",
   }
 
   def initialize(organization:, date:, amount:, note: nil)

@@ -1,3 +1,9 @@
+- organization: .impact
+  date: 2016-03-21
+  amount: 5000
+- organization: .impact
+  date: 2016-02-01
+  amount: 5000
 - organization: Centre for Effective Altruism
   date: 2015-12-22
   amount: 5000

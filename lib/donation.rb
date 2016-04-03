@@ -7,6 +7,7 @@ class Donation
     "Animal Charity Evaluators" => "http://www.animalcharityevaluators.org/",
     "St. Olaf College" => "http://stolaf.edu/",
     "Centre for Effective Altruism" => "https://www.centreforeffectivealtruism.org/",
+    ".impact" => "http://dotimpact.im/",
   }
 
   def initialize(organization:, date:, amount:, note: nil)

@@ -8,6 +8,7 @@ class Donation
     "St. Olaf College" => "http://stolaf.edu/",
     "Centre for Effective Altruism" => "https://www.centreforeffectivealtruism.org/",
     ".impact" => "http://dotimpact.im/",
+    "Mercy for Animals" => "http://www.mercyforanimals.org/",
   }
 
   def initialize(organization:, date:, amount:, note: nil)

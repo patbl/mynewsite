@@ -9,6 +9,8 @@ class Donation
     "Centre for Effective Altruism" => "https://www.centreforeffectivealtruism.org/",
     ".impact" => "http://dotimpact.im/",
     "Mercy for Animals" => "http://www.mercyforanimals.org/",
+    "Effective Altruism Community Fund" => "https://app.effectivealtruism.org/funds/ea-community",
+    "Long-Term Future Fund" => "https://app.effectivealtruism.org/funds/far-future",
   }
 
   def initialize(organization:, date:, amount:, note: nil)

@@ -29,8 +29,12 @@ class Donation
   end
 
   def self.load_donations
-    YAML.load(File.open("lib/donations.yaml")).map { |args|
+    YAML.safe_load(File.open("lib/donations.yaml"), [Date]).map { |args|
       Donation.new(args.symbolize_keys)
     }
+  end
+
+  def self.total
+    load_donations.sum(&:amount)
   end
 end

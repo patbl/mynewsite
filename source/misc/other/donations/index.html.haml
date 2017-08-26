@@ -30,3 +30,9 @@ title: My Donations
           %td= donation.organization
         %td= number_to_currency(donation.amount)
         %td= donation.note
+    %tr
+      %td(style="visibility: hidden;")
+      %td
+        %strong Total
+      %td
+        %strong= number_to_currency(Donation.total)

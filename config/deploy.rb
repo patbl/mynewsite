@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock "3.7.1"
+lock "3.9.0"
 
 set :application, "personal-website"
 set :scm, :middleman

@@ -64,3 +64,5 @@ configure :build do
 
   activate :directory_indexes
 end
+
+Haml::TempleEngine.disable_option_validator!

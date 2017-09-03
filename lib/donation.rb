@@ -1,5 +1,5 @@
 class Donation
-  attr_reader :organization, :amount, :note
+  attr_reader :organization, :amount, :note, :is_grant
 
   ORGANIZATION_URLS = {
     "80,000 Hours" => "http://80000hours.org/",
@@ -13,11 +13,16 @@ class Donation
     "Long-Term Future Fund" => "https://app.effectivealtruism.org/funds/far-future",
   }
 
-  def initialize(organization:, date:, amount:, note: nil)
+  def initialize(organization:, date:, amount:, is_grant: false, note: nil)
     @organization = organization
     @date = date
     @amount = amount
     @note = note
+    @is_grant = is_grant
+  end
+
+  def contribution_amount
+    is_grant ? 0 : amount
   end
 
   def date
@@ -35,6 +40,6 @@ class Donation
   end
 
   def self.total
-    load_donations.sum(&:amount)
+    load_donations.map(&:contribution_amount).inject(0, :+)
   end
 end

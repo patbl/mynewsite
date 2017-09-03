@@ -45,10 +45,12 @@
 - organization: 80,000 Hours
   date: 2015-08-24
   amount: 38307.58
+  is_grant: true
   note: Grant from The Eleemosynary Flying Orang−Utans Fund
 - organization: Animal Charity Evaluators
   date: 2015-07-7
   amount: 10000
+  is_grant: true
   note: Grant from The Eleemosynary Flying Orang−Utans Fund
 - organization: The Eleemosynary Flying Orang−Utans Fund
   date: 2015-07-22

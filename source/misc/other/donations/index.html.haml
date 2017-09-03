@@ -28,11 +28,11 @@ title: My Donations
           %td= link_to donation.organization, donation.url
         - else
           %td= donation.organization
-        %td= number_to_currency(donation.amount)
+        %td{style: ("color: gray" if donation.is_grant)}= number_to_currency(donation.amount)
         %td= donation.note
     %tr
       %td(style="visibility: hidden;")
       %td
-        %strong Total
+        %strong Total Donated
       %td
         %strong= number_to_currency(Donation.total)

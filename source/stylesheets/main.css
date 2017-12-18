@@ -3,9 +3,17 @@ body {
 }
 
 .unsure {
-  color: #787878;
+  color: #8795a1;
 }
 
 .lyrics {
   white-space: pre;
 }
+
+/* BEGIN Tailwind CSS classes */
+
+.text-right { text-align: right; }
+.font-bold { font-weight: 700; }
+.text-grey-dark { color: #8795a1; }
+
+/* END Tailwind CSS classes */

@@ -12,6 +12,7 @@ class Donation
     "Effective Altruism Community Fund" => "https://app.effectivealtruism.org/funds/ea-community",
     "Long-Term Future Fund" => "https://app.effectivealtruism.org/funds/far-future",
     "MIRI" => "https://intelligence.org/",
+    "AIDS/LifeCycle" => "https://www.aidslifecycle.org/",
   }
 
   def initialize(organization:, date:, amount:, is_grant: false, note: nil)

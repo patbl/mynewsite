@@ -1,5 +1,5 @@
 class Donation
-  attr_reader :organization, :amount, :note, :is_grant
+  attr_reader :organization, :date, :amount, :note, :is_grant
 
   ORGANIZATION_URLS = {
     "80,000 Hours" => "http://80000hours.org/",
@@ -27,8 +27,8 @@ class Donation
     is_grant ? 0 : amount
   end
 
-  def date
-    @date.strftime("%-d %B %Y")
+  def formatted_date
+    date.strftime("%-d %B %Y")
   end
 
   def url
@@ -38,7 +38,7 @@ class Donation
   def self.load_donations
     YAML.safe_load(File.open("lib/donations.yaml"), [Date]).map { |args|
       Donation.new(args.symbolize_keys)
-    }
+    }.sort_by(&:date).reverse
   end
 
   def self.total

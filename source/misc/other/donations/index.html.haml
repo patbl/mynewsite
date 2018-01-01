@@ -40,7 +40,7 @@ title: My Donations
   %tbody
     - Donation.load_donations.each do |donation|
       %tr
-        %td= donation.date
+        %td= donation.formatted_date
         - if donation.url
           %td= link_to donation.organization, donation.url
         - else

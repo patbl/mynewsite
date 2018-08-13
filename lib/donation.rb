@@ -1,5 +1,5 @@
 class Donation
-  attr_reader :organization, :date, :amount, :note, :is_grant
+  attr_reader :organization, :date, :amount, :note, :is_grant, :is_daf_contribution
 
   ORGANIZATION_URLS = {
     "80,000 Hours" => "http://80000hours.org/",
@@ -15,16 +15,21 @@ class Donation
     "AIDS/LifeCycle" => "https://www.aidslifecycle.org/",
   }
 
-  def initialize(organization:, date:, amount:, is_grant: false, note: nil)
+  def initialize(organization:, date:, amount:, is_grant: false, is_daf_contribution: false, note: nil)
     @organization = organization
     @date = date
     @amount = amount
     @note = note
     @is_grant = is_grant
+    @is_daf_contribution = is_daf_contribution
   end
 
-  def contribution_amount
+  def amount_donated_by_me
     is_grant ? 0 : amount
+  end
+
+  def amount_received_by_charity
+    is_daf_contribution ? 0 : amount
   end
 
   def formatted_date
@@ -41,7 +46,11 @@ class Donation
     }.sort_by(&:date).reverse
   end
 
-  def self.total
-    load_donations.sum(&:contribution_amount)
+  def self.total_donated_by_me
+    load_donations.sum(&:amount_donated_by_me)
+  end
+
+  def self.total_received_by_charities
+    load_donations.sum(&:amount_received_by_charity)
   end
 end

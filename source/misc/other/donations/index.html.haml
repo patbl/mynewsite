@@ -10,8 +10,10 @@ title: My Donations
   them.)
 
 %p
-  Both contributions to and grants from my donor-advised fund are listed below.
-  I included only my contributions to the fund in the "Total Donated" figure.
+  Both contributions to and grants from my donor-advised fund (DAF) are listed
+  below. The "Total donated by me" figure includes donations to my personal DAF,
+  but excludes grants from it. The "Total received by charities" figure excludes
+  donations to my personal DAF but includes grants from it.
 
 %p
   In 2016, I decided to direct the majority of my donations to a
@@ -23,10 +25,9 @@ title: My Donations
 %blockquote.blockquote{style: "font-size: 14px;"} Since 2012, one of my side projects has been working with a private individual (who has provided the vast majority of the funds and prefers to remain anonymous) to make donations to organizations working in the effective altruism space and organizations working on mitigating global catastrophic risks (especially potential risks from advanced AI). We meet every three weeks to discuss potential donation opportunities and make decisions, and we both keep up with activities in the space through relationships we’ve built up over time. The DAF is jointly controlled by me and this partner.
 
 %p
-  The EA Giving Group DAF has been superseded by the Effective
-  Alturism Community Fund and the Long-Term Future Fund (also
-  administered by Nick Beckstead), which I have donated to more
-  recently.
+  The EA Giving Group DAF has been superseded by the Effective Alturism
+  Community Fund and the Long-Term Future Fund (which was, until August 2018,
+  also administered by Nick Beckstead).
 
 %table.table.table-striped.table-bordered
   %thead
@@ -48,6 +49,12 @@ title: My Donations
     %tr
       %td(style="visibility: hidden;")
       %td
-        .font-bold Total Donated
+        .font-bold Total donated by me
       %td
-        .font-bold.text-right= number_to_currency(Donation.total)
+        .font-bold.text-right= number_to_currency(Donation.total_donated_by_me)
+    %tr
+      %td(style="visibility: hidden;")
+      %td
+        .font-bold Total received by charities and external DAFs
+      %td
+        .font-bold.text-right= number_to_currency(Donation.total_received_by_charities)

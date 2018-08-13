@@ -1,6 +1,7 @@
 - organization: Personal donor-advised fund
   date: 2018-07-20
   amount: 35000
+  is_daf_contribution: true
 - organization: Long-Term Future Fund
   date: 2017-12-29
   amount: 11100
@@ -70,18 +71,23 @@
 - organization: Personal donor-advised fund
   date: 2015-07-22
   amount: 8000
+  is_daf_contribution: true
 - organization: Personal donor-advised fund
   date: 2015-04-2
   amount: 8000
+  is_daf_contribution: true
 - organization: Personal donor-advised fund
   date: 2015-02-2
   amount: 10000
+  is_daf_contribution: true
 - organization: Personal donor-advised fund
   date: 2014-12-29
   amount: 15000
+  is_daf_contribution: true
 - organization: Personal donor-advised fund
   date: 2014-12-29
   amount: 15616.35
+  is_daf_contribution: true
 - organization: 80,000 Hours
   date: 2014-01-8
   amount: 30000

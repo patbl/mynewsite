@@ -42,6 +42,6 @@ class Donation
   end
 
   def self.total
-    load_donations.map(&:contribution_amount).inject(0, :+)
+    load_donations.sum(&:contribution_amount)
   end
 end

@@ -26,7 +26,7 @@
 
   %body
     .navbar.navbar-default
-      .container-fluid
+      .container
         .navbar-header
           %button.navbar-toggle.collapsed(type="button" data-toggle="collapse" data-target="#navbar-collapse")
             %span.icon-bar
@@ -38,5 +38,5 @@
             - menu_items.each do |path, title|
               %li= link_to(title, path)
 
-    .container-fluid
+    .container
       ~ yield

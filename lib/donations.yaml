@@ -58,25 +58,25 @@
   date: 2015-08-24
   amount: 38307.58
   is_grant: true
-  note: Grant from The Eleemosynary Flying Orang−Utans Fund
+  note: Grant from personal donor-advised fund
 - organization: Animal Charity Evaluators
   date: 2015-07-7
   amount: 10000
   is_grant: true
-  note: Grant from The Eleemosynary Flying Orang−Utans Fund
-- organization: The Eleemosynary Flying Orang−Utans Fund
+  note: Grant from personal donor-advised fund
+- organization: Personal donor-advised fund
   date: 2015-07-22
   amount: 8000
-- organization: The Eleemosynary Flying Orang−Utans Fund
+- organization: Personal donor-advised fund
   date: 2015-04-2
   amount: 8000
-- organization: The Eleemosynary Flying Orang−Utans Fund
+- organization: Personal donor-advised fund
   date: 2015-02-2
   amount: 10000
-- organization: The Eleemosynary Flying Orang−Utans Fund
+- organization: Personal donor-advised fund
   date: 2014-12-29
   amount: 15000
-- organization: The Eleemosynary Flying Orang−Utans Fund
+- organization: Personal donor-advised fund
   date: 2014-12-29
   amount: 15616.35
 - organization: 80,000 Hours

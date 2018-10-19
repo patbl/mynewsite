@@ -1,4 +1,8 @@
 - organization: Personal donor-advised fund
+  date: 2018-08-13
+  amount: 20000
+  is_daf_contribution: true
+- organization: Personal donor-advised fund
   date: 2018-07-20
   amount: 35000
   is_daf_contribution: true

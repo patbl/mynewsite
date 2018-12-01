@@ -13,6 +13,9 @@ class Donation
     "Long-Term Future Fund" => "https://app.effectivealtruism.org/funds/far-future",
     "MIRI" => "https://intelligence.org/",
     "AIDS/LifeCycle" => "https://www.aidslifecycle.org/",
+    "ALLFED" => "http://allfed.info/",
+    "Global Catastrophic Risk Institute" => "https://gcrinstitute.org/",
+    "Berkeley REACH" => "https://www.berkeleyreach.org/",
   }
 
   def initialize(organization:, date:, amount:, is_grant: false, is_daf_contribution: false, note: nil)

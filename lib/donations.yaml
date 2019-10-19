@@ -1,3 +1,40 @@
+- organization: Long-Term Future Fund
+  date: 2019-10-16
+  amount: 44000
+- organization: Berkeley REACH
+  date: 2019-10-01
+  amount: 100
+- organization: Berkeley REACH
+  date: 2019-09-01
+  amount: 100
+- organization: Berkeley REACH
+  date: 2019-08-01
+  amount: 100
+- organization: Personal donor-advised fund
+  date: 2019-07-04
+  amount: 30000
+  is_daf_contribution: true
+- organization: Berkeley REACH
+  date: 2019-07-01
+  amount: 100
+- organization: Berkeley REACH
+  date: 2019-06-01
+  amount: 100
+- organization: Berkeley REACH
+  date: 2019-05-01
+  amount: 100
+- organization: Berkeley REACH
+  date: 2019-04-01
+  amount: 100
+- organization: Berkeley REACH
+  date: 2019-03-01
+  amount: 100
+- organization: Berkeley REACH
+  date: 2019-02-01
+  amount: 100
+- organization: Berkeley REACH
+  date: 2019-01-01
+  amount: 100
 - organization: Berkeley REACH
   date: 2018-12-01
   amount: 100

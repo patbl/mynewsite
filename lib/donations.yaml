@@ -1,3 +1,16 @@
+- organization: ALLFED
+  date: 2019-12-03
+  amount: 7497
+  note: <a href="https://web.archive.org/web/20191203143441/https://www.facebook.com/help/332488213787105">Matched by Facebook</a>
+- organization: Berkeley Existential Risk Initiative
+  date: 2019-12-03
+  amount: 7497
+- organization: Berkeley REACH
+  date: 2019-12-01
+  amount: 100
+- organization: Berkeley REACH
+  date: 2019-11-01
+  amount: 100
 - organization: Long-Term Future Fund
   date: 2019-10-16
   amount: 44000
@@ -62,9 +75,14 @@
 - organization: ALLFED
   date: 2018-11-27
   amount: 2499
+  note: <a href="https://web.archive.org/web/20181122031535/https://www.facebook.com/help/332488213787105">Possibly matched by Facebook</a>
 - organization: Long-Term Future Fund
   date: 2018-11-27
-  amount: 2504
+  amount: 2499
+  note: <a href="https://web.archive.org/web/20181122031535/https://www.facebook.com/help/332488213787105">Possibly matched by Facebook</a>
+- organization: Long-Term Future Fund
+  date: 2018-11-27
+  amount: 5
 - organization: Long-Term Future Fund
   date: 2018-10-27
   amount: 14000

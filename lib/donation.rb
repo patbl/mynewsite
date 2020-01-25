@@ -47,7 +47,9 @@ class Donation
   def self.load_donations
     YAML.safe_load(File.open("lib/donations.yaml"), [Date]).map { |args|
       Donation.new(args.symbolize_keys)
-    }.sort_by(&:date).reverse
+    }.sort_by { |donation|
+      [donation.date, donation.organization, donation.amount, donation.note]
+    }.reverse
   end
 
   def self.total_donated_by_me

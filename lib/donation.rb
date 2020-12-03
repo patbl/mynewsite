@@ -18,6 +18,7 @@ class Donation
     "Berkeley REACH" => "https://www.berkeleyreach.org/",
     "Berkeley Existential Risk Initiative" => "https://existence.org/",
     "Guarding Against Pandemics" => "https://www.againstpandemics.org/",
+    "Rethink Priorities" => "https://www.rethinkpriorities.org/",
   }
 
   def initialize(organization:, date:, amount:, is_grant: false, is_daf_contribution: false, note: nil)

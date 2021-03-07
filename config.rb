@@ -46,7 +46,7 @@ set :js_dir, 'javascripts'
 set :images_dir, 'images'
 
 # Build-specific configuration
-configure :build do
+configure :production do
   # For example, change the Compass output style for deployment
   # activate :minify_css
 

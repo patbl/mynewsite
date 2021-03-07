@@ -1,9 +1,9 @@
 :ruby
   menu_items = {
-    '/' => 'About',
+    '/index.html' => 'About',
     'https://patbl-public.s3-us-west-1.amazonaws.com/cvPatrick.pdf' => 'Résumé',
-    '/links/' => 'Links',
-    '/misc/' => 'Miscellaneous',
+    '/links/index.html' => 'Links',
+    '/misc/index.html' => 'Miscellaneous',
   }
 
 !!! 5
@@ -32,7 +32,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          = link_to "Patrick Brinich-Langlois", "/", class: "navbar-brand"
+          = link_to "Patrick Brinich-Langlois", "/index.html", class: "navbar-brand"
         .collapse.navbar-collapse#navbar-collapse
           %ul.nav.navbar-nav
             - menu_items.each do |path, title|

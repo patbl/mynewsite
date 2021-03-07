@@ -46,7 +46,7 @@ set :js_dir, 'javascripts'
 set :images_dir, 'images'
 
 # Build-specific configuration
-configure :build do
+configure :production do
   # For example, change the Compass output style for deployment
   # activate :minify_css
 
@@ -61,6 +61,7 @@ configure :build do
 
   # Or use a different image path
   # set :http_prefix, "/Content/images/"
+  set :http_prefix, '/personal-site'
 
   activate :directory_indexes
 end

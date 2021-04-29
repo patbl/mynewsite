@@ -7,7 +7,7 @@ class Donation
     "Animal Charity Evaluators" => "http://www.animalcharityevaluators.org/",
     "St. Olaf College" => "http://stolaf.edu/",
     "Centre for Effective Altruism" => "https://www.centreforeffectivealtruism.org/",
-    ".impact" => "http://dotimpact.im/",
+    ".impact (now Rethink Charity)" => "https://www.rethinkprojects.org/",
     "Mercy for Animals" => "http://www.mercyforanimals.org/",
     "Effective Altruism Community Fund" => "https://app.effectivealtruism.org/funds/ea-community",
     "Long-Term Future Fund" => "https://app.effectivealtruism.org/funds/far-future",

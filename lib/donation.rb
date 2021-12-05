@@ -44,6 +44,11 @@ class Donation
   end
 
   def url
+    case organization
+    when "EA Giving Group donor-advised fund"
+      return "/misc/other/donations/ea_giving_group.html"
+    end
+
     return unless (org_data = organizations[organization])
 
     org_data.fetch("url")

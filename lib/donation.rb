@@ -44,7 +44,13 @@ class Donation
   end
 
   def url
-    ORGANIZATION_URLS[organization]
+    return unless (org_data = organizations[organization])
+
+    org_data.fetch("url")
+  end
+
+  def organizations
+    @organizations ||= YAML.safe_load(File.open("lib/organizations.yaml"))
   end
 
   def self.load_donations

@@ -59,7 +59,7 @@ class Donation
   end
 
   def self.load_donations
-    YAML.safe_load(File.open("lib/donations.yaml"), [Date]).map { |args|
+    YAML.safe_load_file("lib/donations.yaml", permitted_classes: [Date]).map { |args|
       Donation.new(**args.symbolize_keys)
     }.sort_by { |donation|
       [donation.date, donation.organization, donation.amount, donation.note]

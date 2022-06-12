@@ -1,5 +1,5 @@
 source "https://rubygems.org"
 
-gem "middleman", git: "https://github.com/middleman/middleman", ref: "d180ca3"
+gem "middleman", git: "https://github.com/middleman/middleman"
 gem "middleman-livereload"
 gem "pry-byebug"

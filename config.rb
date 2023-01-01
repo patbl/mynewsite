@@ -25,7 +25,7 @@
 
 # Automatic image dimensions on image_tag helper
 # activate :automatic_image_sizes
-require "lib/donation"
+Dir.glob("lib/**/*.rb") { load _1 }
 
 # Reload the browser automatically whenever files change
 configure :development do

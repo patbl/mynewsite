@@ -14,7 +14,9 @@ title: My Donations
   below. The "Total donated by me" figure includes donations to my personal DAF,
   but excludes grants from it. The "Total received by charities" figure excludes
   donations to my personal DAF but includes grants from it. Grants from my personal
-  DAF appear in light gray.
+  DAF appear in <span class="text-grey-dark">light gray</span>. Donations that
+  are very likely to have been robustly ineffectual appear in
+  <span class="text-red-500">red</span>.
 
 %table.table.table-striped.table-bordered
   %thead
@@ -31,7 +33,7 @@ title: My Donations
           %td= link_to donation.organization, donation.url
         - else
           %td= donation.organization
-        %td.text-right{class: ("text-grey-dark" if donation.is_grant)}= number_to_currency(donation.amount)
+        %td.text-right{class: donation.css_class}= number_to_currency(donation.amount)
         %td= donation.note
     %tr
       %td(style="visibility: hidden;")

@@ -15,5 +15,6 @@ body {
 .text-right { text-align: right; }
 .font-bold { font-weight: 700; }
 .text-grey-dark { color: #8795a1; }
+.text-red-500 { color: rgb(239 68 68); }
 
 /* END Tailwind CSS classes */

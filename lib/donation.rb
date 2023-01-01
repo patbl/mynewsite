@@ -1,6 +1,4 @@
 class Donation
-  attr_reader :organization, :date, :amount, :note, :is_grant, :is_daf_contribution
-
   ORGANIZATION_URLS = {
     "80,000 Hours" => "http://80000hours.org/",
     "The Humane League" => "http://www.thehumaneleague.com/",
@@ -22,21 +20,32 @@ class Donation
     "Donor Lottery" => "https://app.effectivealtruism.org/lotteries",
   }
 
-  def initialize(organization:, date:, amount:, is_grant: false, is_daf_contribution: false, note: nil)
-    @organization = organization
-    @date = date
-    @amount = amount
-    @note = note
-    @is_grant = is_grant
-    @is_daf_contribution = is_daf_contribution
+  ATTRIBUTES = [
+    {name: :organization},
+    {name: :date},
+    {name: :amount},
+    {name: :is_grant, new_name: :grant?, default: false},
+    {name: :is_daf_contribution, new_name: :daf_contribution?, default: false},
+    {name: :note, default: nil},
+    {name: :ineffectual, new_name: :ineffectual?, default: false},
+  ]
+  def initialize(values)
+    ATTRIBUTES.each do |attrs|
+      original_name = attrs.fetch(:name)
+      new_name = attrs.fetch(:new_name, original_name)
+      instance_variable_set(:"@#{original_name}", values.fetch(original_name) { attrs.fetch(:default) })
+      define_singleton_method(new_name) do
+        instance_variable_get(:"@#{original_name}")
+      end
+    end
   end
 
   def amount_donated_by_me
-    is_grant ? 0 : amount
+    grant? ? 0 : amount
   end
 
   def amount_received_by_charity
-    is_daf_contribution ? 0 : amount
+    daf_contribution? ? 0 : amount
   end
 
   def formatted_date
@@ -58,9 +67,25 @@ class Donation
     @organizations ||= YAML.safe_load(File.open("lib/organizations.yaml"))
   end
 
+  def ineffectual_amount_donated
+    ineffectual? ? amount_donated_by_me : 0
+  end
+
+  def possibly_effectual_amount_donated
+    ineffectual? ? 0 : amount_donated_by_me
+  end
+
+  def css_class
+    if ineffectual?
+      "text-red-500"
+    elsif grant?
+      "text-grey-dark"
+    end
+  end
+
   def self.load_donations
     YAML.safe_load_file("lib/donations.yaml", permitted_classes: [Date]).map { |args|
-      Donation.new(**args.symbolize_keys)
+      Donation.new(args.symbolize_keys)
     }.sort_by { |donation|
       [donation.date, donation.organization, donation.amount, donation.note]
     }.reverse
@@ -72,5 +97,12 @@ class Donation
 
   def self.total_received_by_charities
     load_donations.sum(&:amount_received_by_charity)
+  end
+
+  def self.donations_by_year
+    load_donations
+      .group_by { |donation| donation.date.year }
+      .sort_by(&:first)
+      .reverse
   end
 end

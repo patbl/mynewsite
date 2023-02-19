@@ -28,6 +28,7 @@ class Donation
     {name: :is_daf_contribution, new_name: :daf_contribution?, default: false},
     {name: :note, default: nil},
     {name: :ineffectual, new_name: :ineffectual?, default: false},
+    {name: :hidden, new_name: :hidden?, default: false},
   ]
   def initialize(values)
     ATTRIBUTES.each do |attrs|
@@ -83,24 +84,27 @@ class Donation
     end
   end
 
-  def self.load_donations
+  def self.load_donations(show_hidden:)
     YAML.safe_load_file("lib/donations.yaml", permitted_classes: [Date]).map { |args|
       Donation.new(args.symbolize_keys)
-    }.sort_by { |donation|
+    }
+    .select { |donation| show_hidden || !donation.hidden? }
+    .sort_by { |donation|
       [donation.date, donation.organization, donation.amount, donation.note]
-    }.reverse
+    }
+    .reverse
   end
 
-  def self.total_donated_by_me
-    load_donations.sum(&:amount_donated_by_me)
+  def self.total_donated_by_me(show_hidden:)
+    load_donations(show_hidden: show_hidden).sum(&:amount_donated_by_me)
   end
 
-  def self.total_received_by_charities
-    load_donations.sum(&:amount_received_by_charity)
+  def self.total_received_by_charities(show_hidden:)
+    load_donations(show_hidden: show_hidden).sum(&:amount_received_by_charity)
   end
 
-  def self.donations_by_year
-    load_donations
+  def self.donations_by_year(show_hidden:)
+    load_donations(show_hidden: show_hidden)
       .group_by { |donation| donation.date.year }
       .sort_by(&:first)
       .reverse

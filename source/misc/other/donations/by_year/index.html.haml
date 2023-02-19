@@ -12,9 +12,23 @@ title: Donations by year
       %th Suspected Ineffectual Amount
       %th Possibly Effectual Amount
   %tbody
-    - Donation.donations_by_year.each do |year, donations|
+    - Donation.donations_by_year(show_hidden: true).each do |year, donations|
       %tr
         %td= year
         %td= number_to_currency(donations.sum(&:amount_donated_by_me))
         %td= number_to_currency(donations.sum(&:ineffectual_amount_donated))
         %td= number_to_currency(donations.sum(&:possibly_effectual_amount_donated))
+
+    %tr
+      %td(rowspan="2")
+      %td
+        .font-bold Total donated by me
+      %td
+      %td
+        .font-bold.text-right= number_to_currency(Donation.total_donated_by_me(show_hidden: true))
+    %tr(style="background-color: white;")
+      %td
+        .font-bold Total received by charities and external DAFs
+      %td
+      %td
+        .font-bold.text-right= number_to_currency(Donation.total_received_by_charities(show_hidden: true))

@@ -34,7 +34,7 @@ title: My Donations
         - else
           %td= donation.organization
         %td.text-right{class: donation.css_class}= number_to_currency(donation.amount)
-        %td= donation.note
+        %td!= donation.note
     %tr(style="background-color: white;")
       %td(rowspan="2")
       %td

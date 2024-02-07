@@ -24,7 +24,7 @@ title: My Donations
       %th Amount
       %th Notes
   %tbody
-    - Donation.load_donations(show_hidden: false).each do |donation|
+    - Donation.load_donations.each do |donation|
       %tr
         %td= donation.formatted_date
         - if donation.url
@@ -38,9 +38,9 @@ title: My Donations
       %td
         .font-bold Total donated by me
       %td
-        .font-bold.text-right= number_to_currency(Donation.total_donated_by_me(show_hidden: false))
+        .font-bold.text-right= number_to_currency(Donation.total_donated_by_me)
     %tr(style="background-color: white;")
       %td
         .font-bold Total received by charities and external DAFs
       %td
-        .font-bold.text-right= number_to_currency(Donation.total_received_by_charities(show_hidden: false))
+        .font-bold.text-right= number_to_currency(Donation.total_received_by_charities)

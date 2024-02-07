@@ -1,33 +1,30 @@
+# frozen_string_literal: true
+
 class Donation
   ATTRIBUTES = [
-    {name: :organization},
-    {name: :date},
-    {name: :amount},
-    {name: :is_grant, new_name: :grant?, default: false},
-    {name: :is_daf_contribution, new_name: :daf_contribution?, default: false},
-    {name: :note, default: nil},
+    :organization,
+    :date,
+    :amount,
+    :is_grant,
+    :is_daf_contribution,
+    :note,
   ]
   def initialize(values)
-    ATTRIBUTES.each do |attrs|
-      original_name = attrs.fetch(:name)
-      new_name = attrs.fetch(:new_name, original_name)
-      value = values.fetch(original_name) { attrs.fetch(:default) }
-      if new_name == :date
-        value = Date.parse(value)
-      end
-      instance_variable_set(:"@#{original_name}", value)
-      define_singleton_method(new_name) do
-        instance_variable_get(:"@#{original_name}")
+    ATTRIBUTES.each do |attr|
+      value = values.fetch(attr)
+      instance_variable_set(:"@#{attr}", value)
+      define_singleton_method(attr) do
+        instance_variable_get(:"@#{attr}")
       end
     end
   end
 
   def amount_donated_by_me
-    grant? ? 0 : amount
+    is_grant ? 0 : amount
   end
 
   def amount_received_by_charity
-    daf_contribution? ? 0 : amount
+    is_daf_contribution ? 0 : amount
   end
 
   def formatted_date
@@ -35,48 +32,50 @@ class Donation
   end
 
   def url
-    case organization
-    when "EA Giving Group donor-advised fund"
-      return "/misc/other/donations/ea_giving_group.html"
-    end
-
-    return unless (org_data = organizations[organization])
-
-    org_data.fetch("url")
+    org_data = self.class.organizations[organization] or return
+    org_data.fetch(:url)
   end
 
-  def organizations
-    @organizations ||= File.read("lib/organizations.json")
-      .then { |json| JSON.parse(json) }
-      .index_by { |org| org.fetch("name") }
+  def self.organizations
+    @organizations ||= donation_data_fetcher
+      .organizations
+      .index_by { |org| org.fetch(:name) }
   end
 
   def css_class
-    if grant?
+    if is_grant
       "text-grey-dark"
     end
   end
 
-  def self.load_donations(*)
-    File.read("lib/donations.json")
-      .then { |json| JSON.parse(json) }
+  def self.load_donations
+    @donations ||= donation_data_fetcher
+      .donations
       .map { |donation| Donation.new(donation.symbolize_keys) }
       .sort_by { |donation| [donation.date, donation.organization, donation.amount, donation.note] }
       .reverse
   end
 
-  def self.total_donated_by_me(show_hidden:)
-    load_donations(show_hidden: show_hidden).sum(&:amount_donated_by_me)
+  def self.total_donated_by_me
+    load_donations.sum(&:amount_donated_by_me)
   end
 
-  def self.total_received_by_charities(show_hidden:)
-    load_donations(show_hidden: show_hidden).sum(&:amount_received_by_charity)
+  def self.total_received_by_charities
+    load_donations.sum(&:amount_received_by_charity)
   end
 
-  def self.donations_by_year(show_hidden:)
-    load_donations(show_hidden: show_hidden)
+  def self.donations_by_year
+    load_donations
       .group_by { |donation| donation.date.year }
       .sort_by(&:first)
       .reverse
+  end
+
+  def self.donation_data_fetcher
+    @donation_data_fetcher ||= DonationDataFetcher.new(
+      ENV['NOTION_DONATIONS_UPDATER_API_KEY'],
+      "6721200455be4b7c820df4a9ce51fd30",
+      "738df83195f74d66b466c71519dc5a1b",
+    )
   end
 end

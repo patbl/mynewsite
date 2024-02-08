@@ -1,4 +1,5 @@
-Dir.glob("lib/**/*.rb") { load _1 }
+require "lib/donation"
+require "lib/donation_data_fetcher"
 
 # Reload the browser automatically whenever files change
 configure :development do

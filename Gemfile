@@ -2,7 +2,8 @@
 
 source "https://rubygems.org"
 
-gem "middleman"
+gem "csv"
+gem "middleman", git: "https://github.com/middleman/middleman"
 
 group :development do
   gem "pry"

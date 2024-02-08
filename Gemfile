@@ -1,4 +1,7 @@
 source "https://rubygems.org"
 
 gem "middleman"
-gem "middleman-livereload"
+
+group :development do
+  gem "middleman-livereload"
+end
